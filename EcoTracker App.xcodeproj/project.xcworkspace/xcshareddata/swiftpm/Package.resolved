@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftnet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/WhereIsPumpkin/SwiftNet",
+      "state" : {
+        "branch" : "main",
+        "revision" : "618315bd861e373d28af45fb08fb5ada95012a7c"
+      }
+    }
+  ],
+  "version" : 2
+}
