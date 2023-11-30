@@ -9,7 +9,10 @@ import UIKit
 
 final class WeatherViewController: UIViewController {
     
+    
     // MARK: UIelements
+    
+    let viewModel = WeatherViewModel()
     
     let latitudeTextField: UITextField = {
         let textField = UITextField()
@@ -35,31 +38,35 @@ final class WeatherViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Generate Weather", for: .normal)
         button.setTitleColor(.buttonBackground, for: .normal)
-        //        button.addTarget(self, action: #selector(generateWeather), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     let cityLabel: UILabel = {
         let label = UILabel()
-        label.text = "City: "
-        label.textColor = .textColor
+        label.text = ""
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        label.textColor = .componentAccent
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let temperatureLabel: UILabel = {
         let label = UILabel()
-        label.text = "Temperature: "
+        label.text = ""
         label.textColor = .textColor
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let weatherTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Weather Type: "
+        label.text = ""
         label.textColor = .textColor
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,7 +74,7 @@ final class WeatherViewController: UIViewController {
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -78,8 +85,8 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIsetup()
+        setupButton()
     }
-    
     
     // MARK: UISetup
     
@@ -117,5 +124,33 @@ final class WeatherViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
-    
+    private func setupButton() {
+            generateWeatherButton.addTarget(self, action: #selector(generateWeatherButtonTapped), for: .touchUpInside)
+        }
+
+        @objc private func generateWeatherButtonTapped() {
+            guard let latitudeText = latitudeTextField.text,
+                  let longitudeText = longitudeTextField.text,
+                  let latitude = Double(latitudeText),
+                  let longitude = Double(longitudeText) else {
+                return
+            }
+
+            viewModel.getWeather(latitude: latitude, longitude: longitude) { [weak self] result in
+                switch result {
+                case .success(let weatherData):
+                    self?.updateUI(with: weatherData)
+                case .failure(let error):
+                    print("Error fetching weather data: \(error)")
+                }
+            }
+        }
+
+        private func updateUI(with weatherData: WeatherData) {
+            cityLabel.text = weatherData.city.name
+            temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °C"
+            weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
+        }
 }
+
+
