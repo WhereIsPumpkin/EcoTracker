@@ -24,6 +24,7 @@
 		75CB44F12B16B416005E8364 /* TabBarItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB44F02B16B416005E8364 /* TabBarItemsController.swift */; };
 		75CB44F72B17C33B005E8364 /* NetSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75CB44F62B17C33B005E8364 /* NetSwift */; };
 		A111085A2B189C3B00910B97 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11108592B189C3B00910B97 /* UIColor.swift */; };
+		A9A97FEC2B18DE02002E4337 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97FEB2B18DE02002E4337 /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		752ADCED2B16B14800EF35F7 /* PopulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewModel.swift; sourceTree = "<group>"; };
 		75CB44F02B16B416005E8364 /* TabBarItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsController.swift; sourceTree = "<group>"; };
 		A11108592B189C3B00910B97 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		A9A97FEB2B18DE02002E4337 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = "../../../ამინდი/ამინდი/ამინდი/WeatherModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		752ADCCF2B16ACF200EF35F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A9A97FEB2B18DE02002E4337 /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				A111085A2B189C3B00910B97 /* UIColor.swift in Sources */,
 				752ADCE32B16B0AD00EF35F7 /* SpecieViewController.swift in Sources */,
 				752ADCB82B16ABC000EF35F7 /* AppDelegate.swift in Sources */,
+				A9A97FEC2B18DE02002E4337 /* WeatherModel.swift in Sources */,
 				752ADCDD2B16B00500EF35F7 /* AirQualityViewModel.swift in Sources */,
 				752ADCDF2B16B04100EF35F7 /* WeatherViewController.swift in Sources */,
 				752ADCE12B16B08400EF35F7 /* WeatherViewModel.swift in Sources */,
