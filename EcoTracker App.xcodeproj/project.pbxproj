@@ -23,6 +23,7 @@
 		752ADCEE2B16B14800EF35F7 /* PopulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ADCED2B16B14800EF35F7 /* PopulationViewModel.swift */; };
 		75CB44F12B16B416005E8364 /* TabBarItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB44F02B16B416005E8364 /* TabBarItemsController.swift */; };
 		75CB44F72B17C33B005E8364 /* NetSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75CB44F62B17C33B005E8364 /* NetSwift */; };
+		A111085A2B189C3B00910B97 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11108592B189C3B00910B97 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		752ADCEB2B16B12E00EF35F7 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		752ADCED2B16B14800EF35F7 /* PopulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewModel.swift; sourceTree = "<group>"; };
 		75CB44F02B16B416005E8364 /* TabBarItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsController.swift; sourceTree = "<group>"; };
+		A11108592B189C3B00910B97 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		752ADCB62B16ABC000EF35F7 /* EcoTracker App */ = {
 			isa = PBXGroup;
 			children = (
+				A11108582B189C0000910B97 /* Extensions */,
 				752ADCCB2B16ABCD00EF35F7 /* App */,
 				752ADCCF2B16ACF200EF35F7 /* Models */,
 				752ADCD12B16AD1100EF35F7 /* Scenes */,
@@ -168,6 +171,14 @@
 			path = Population;
 			sourceTree = "<group>";
 		};
+		A11108582B189C0000910B97 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A11108592B189C3B00910B97 /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				752ADCE52B16B0B400EF35F7 /* SpecieViewModel.swift in Sources */,
+				A111085A2B189C3B00910B97 /* UIColor.swift in Sources */,
 				752ADCE32B16B0AD00EF35F7 /* SpecieViewController.swift in Sources */,
 				752ADCB82B16ABC000EF35F7 /* AppDelegate.swift in Sources */,
 				752ADCDD2B16B00500EF35F7 /* AirQualityViewModel.swift in Sources */,
@@ -406,6 +418,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,6 +445,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
