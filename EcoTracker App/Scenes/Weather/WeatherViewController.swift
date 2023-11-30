@@ -9,84 +9,28 @@ import UIKit
 
 final class WeatherViewController: UIViewController, WeatherViewDelegate {
     
-    // MARK: UIelements
-    
     private let viewModel = WeatherViewModel()
     
-    let latitudeTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = .textFieldBackground
-        textField.attributedPlaceholder = NSAttributedString(string: "Latitude", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)])
-        textField.textColor = .textColor
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
+    // MARK: UIelements
     
-    let longitudeTextField: UITextField = {
-        let textField = UITextField()
-        textField.backgroundColor = UIColor.textFieldBackground
-        textField.attributedPlaceholder = NSAttributedString(string: "Longitude", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)])
-        textField.textColor = .textColor
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    let generateWeatherButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Generate Weather", for: .normal)
-        button.setTitleColor(.buttonBackground, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    let cityLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = .componentAccent
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let temperatureLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.textColor = .textColor
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let weatherTypeLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.textColor = .textColor
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
+    private let latitudeTextField = UITextField()
+    private let longitudeTextField = UITextField()
+    private let generateWeatherButton = UIButton()
+    private let cityLabel = UILabel()
+    private let temperatureLabel = UILabel()
+    private let weatherTypeLabel = UILabel()
+    private let stackView = UIStackView()
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIsetup()
+        elementsSetup()
         setupButton()
         viewModel.delegate = self
     }
+    
     
     // MARK: UISetup
     
@@ -96,14 +40,11 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
         view.addSubview(generateWeatherButton)
         view.addSubview(stackView)
         
-        stackviewSetup()
-        UIConstraints()
-    }
-    
-    private func stackviewSetup() {
         stackView.addArrangedSubview(cityLabel)
         stackView.addArrangedSubview(temperatureLabel)
         stackView.addArrangedSubview(weatherTypeLabel)
+        
+        UIConstraints()
     }
     
     private func UIConstraints() {
@@ -125,19 +66,76 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
         ])
     }
     
+    // MARK: ElementsSetup
+    private func elementsSetup() {
+        latitudeTextFieldSetup()
+        longitudeTextFieldSetup()
+        generateWeatherButtonSetup()
+        cityLabelSetup()
+        temperatureLabelSetup()
+        weatherTypeLabelSetup()
+        stackViewSetup()
+    }
+    
+    private func latitudeTextFieldSetup() {
+        latitudeTextField.backgroundColor = .textFieldBackground
+        latitudeTextField.attributedPlaceholder = NSAttributedString(string: "Latitude", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)])
+        latitudeTextField.textColor = .textColor
+        latitudeTextField.borderStyle = .roundedRect
+        latitudeTextField.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func longitudeTextFieldSetup() {
+        longitudeTextField.backgroundColor = UIColor.textFieldBackground
+        longitudeTextField.attributedPlaceholder = NSAttributedString(string: "Longitude", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)])
+        longitudeTextField.textColor = .textColor
+        longitudeTextField.borderStyle = .roundedRect
+        longitudeTextField.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func generateWeatherButtonSetup () {
+        generateWeatherButton.setTitle("Generate Weather", for: .normal)
+        generateWeatherButton.setTitleColor(.buttonBackground, for: .normal)
+        generateWeatherButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func cityLabelSetup () {
+        cityLabel.text = ""
+        cityLabel.textAlignment = .center
+        cityLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        cityLabel.textColor = .componentAccent
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func temperatureLabelSetup() {
+        temperatureLabel.text = ""
+        temperatureLabel.textColor = .textColor
+        temperatureLabel.textAlignment = .center
+        temperatureLabel.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func weatherTypeLabelSetup() {
+        weatherTypeLabel.text = ""
+        weatherTypeLabel.textColor = .textColor
+        weatherTypeLabel.textAlignment = .center
+        weatherTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func stackViewSetup() {
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     // MARK: SetupButton
+    
     private func setupButton() {
         generateWeatherButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     @objc private func buttonTapped() {
         viewModel.buttonTapped(latitudeText: latitudeTextField.text, longitudeText: longitudeTextField.text)
-    }
-    
-    private func updateUI(with weatherData: WeatherData) {
-        cityLabel.text = weatherData.city.name
-        temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °F"
-        weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
     }
     
     func fetched(with weatherData: WeatherData) {
@@ -147,7 +145,18 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
     }
     
     func error() {
-        print("error")
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: "Incorrect Coordinates. Please try again!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func updateUI(with weatherData: WeatherData) {
+        cityLabel.text = weatherData.city.name
+        temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °F"
+        weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
     }
     
 }

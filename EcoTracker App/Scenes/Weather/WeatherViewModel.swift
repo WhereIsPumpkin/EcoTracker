@@ -14,11 +14,12 @@ protocol WeatherViewDelegate: AnyObject {
     func fetched(with weatherData: WeatherData)
     func error()
 }
-class WeatherViewModel {
+
+final class WeatherViewModel {
     private let networkManager = NetworkManager.shared
     weak var delegate: WeatherViewDelegate?
     
-    func getWeather(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
+    private func getWeather(latitude: Double, longitude: Double, completion: @escaping (Result<WeatherData, Error>) -> Void) {
         let apiKey = "8d75024f90b7aa88dcfbf11ab71ffaab"
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&appid=\(apiKey)"
         
@@ -30,6 +31,7 @@ class WeatherViewModel {
             completion(result)
         }
     }
+    
     func buttonTapped(latitudeText: String?, longitudeText: String?) {
         guard let latitudeText = latitudeText,
               let longitudeText = longitudeText,
@@ -42,9 +44,9 @@ class WeatherViewModel {
             switch result {
             case .success(let weatherData):
                 self?.delegate?.fetched(with: weatherData)
-            case .failure(let error):
+            case .failure(_):
                 self?.delegate?.error()
-                print("Error fetching weather data: \(error)")
+                self?.delegate?.error()
             }
         }
     }
