@@ -7,12 +7,11 @@
 
 import UIKit
 
-final class WeatherViewController: UIViewController {
-    
+final class WeatherViewController: UIViewController, WeatherViewDelegate {
     
     // MARK: UIelements
     
-    let viewModel = WeatherViewModel()
+    private let viewModel = WeatherViewModel()
     
     let latitudeTextField: UITextField = {
         let textField = UITextField()
@@ -86,6 +85,7 @@ final class WeatherViewController: UIViewController {
         super.viewDidLoad()
         UIsetup()
         setupButton()
+        viewModel.delegate = self
     }
     
     // MARK: UISetup
@@ -124,33 +124,32 @@ final class WeatherViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
+    
+    // MARK: SetupButton
     private func setupButton() {
-            generateWeatherButton.addTarget(self, action: #selector(generateWeatherButtonTapped), for: .touchUpInside)
+        generateWeatherButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func buttonTapped() {
+        viewModel.buttonTapped(latitudeText: latitudeTextField.text, longitudeText: longitudeTextField.text)
+    }
+    
+    private func updateUI(with weatherData: WeatherData) {
+        cityLabel.text = weatherData.city.name
+        temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °F"
+        weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
+    }
+    
+    func fetched(with weatherData: WeatherData) {
+        DispatchQueue.main.async {
+            self.updateUI(with: weatherData)
         }
-
-        @objc private func generateWeatherButtonTapped() {
-            guard let latitudeText = latitudeTextField.text,
-                  let longitudeText = longitudeTextField.text,
-                  let latitude = Double(latitudeText),
-                  let longitude = Double(longitudeText) else {
-                return
-            }
-
-            viewModel.getWeather(latitude: latitude, longitude: longitude) { [weak self] result in
-                switch result {
-                case .success(let weatherData):
-                    self?.updateUI(with: weatherData)
-                case .failure(let error):
-                    print("Error fetching weather data: \(error)")
-                }
-            }
-        }
-
-        private func updateUI(with weatherData: WeatherData) {
-            cityLabel.text = weatherData.city.name
-            temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °C"
-            weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
-        }
+    }
+    
+    func error() {
+        print("error")
+    }
+    
 }
 
 
