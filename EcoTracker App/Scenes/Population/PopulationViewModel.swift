@@ -26,6 +26,7 @@ final class PopulationViewModel {
     }
     
     func viewDidload(){
+        
         fetchCountries()
     }
     
@@ -61,7 +62,7 @@ final class PopulationViewModel {
             networkManager.fetchDecodableData(from: url, responseType: TotalPopulation.self) { result in
                 switch result {
                 case .success(let data):
-                    //     print("\(country): \(data)")
+
                     totalPopulation[country] = data.totalPopulation
                 case .failure(let error):
                     DispatchQueue.main.async {

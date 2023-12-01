@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 final class PopulationViewController: UIViewController {
     // MARK: - Properties
     
@@ -22,8 +23,8 @@ final class PopulationViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Fetch Population", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.frame = CGRect(x: 0, y: 0, width: 150, height: 40)
         button.backgroundColor = .buttonBackground
+        button.addTarget(self, action: #selector(fetchPopulationButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -41,13 +42,6 @@ final class PopulationViewController: UIViewController {
         return label
     }()
     
-    private lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [fetchButton])
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        return stackView
-    }()
-    
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [todayPopulationLabel, tomorrowPopulationLabel])
         stackView.axis = .vertical
@@ -56,11 +50,10 @@ final class PopulationViewController: UIViewController {
         return stackView
     }()
     
-    
     private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [countryField, buttonStackView, labelStackView])
+        let stackView = UIStackView(arrangedSubviews: [countryField, fetchButton, labelStackView])
         stackView.axis = .vertical
-        stackView.spacing = 30
+        stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = .init(top: 200, left: 40, bottom: 0, right: 40)
@@ -74,18 +67,21 @@ final class PopulationViewController: UIViewController {
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupNavigationBarTitle()
-        setupBackground()
-        addSubviewsToView()
+        setupUI()
         setupViewModelDelegate()
     }
     
     // MARK: - Private Methods
     
+    private func setupUI() {
+        setupNavigationBarTitle()
+        setupBackground()
+        addSubviewsToView()
+    }
+    
     private func setupNavigationBarTitle() {
         let titleLabel = UILabel()
-        titleLabel.text = "Air Quality"
+        titleLabel.text = "Population"
         titleLabel.textColor = .white
         navigationItem.titleView = titleLabel
     }
@@ -114,13 +110,10 @@ final class PopulationViewController: UIViewController {
     
     private func setupViewModelDelegate() {
         viewModel.delegate = self
-        
-        fetchButton.addTarget(self, action: #selector(fetchPopulationButtonTapped), for: .touchUpInside)
-        
     }
+    
     @objc private func fetchPopulationButtonTapped() {
         guard let country = countryField.text, !country.isEmpty else {
-            print("No country entered")
             return
         }
         
@@ -131,10 +124,8 @@ final class PopulationViewController: UIViewController {
 
 extension PopulationViewController: PopulationViewModelDelegate {
     func didFetchTotalPopulation(_ totalPopulation: [String : [TotalPopulation.Population]]) {
-        for (country, populationData) in totalPopulation {
-            print("Country: \(country)")
-            for population in populationData {
-                print("Date: \(population.date), Population: \(population.population)")
+        for (_, populationData) in totalPopulation {
+            for _ in populationData {
             }
             let todayPopulation = populationData.first?.population ?? 0
             let tomorrowPopulation = populationData.last?.population ?? 0
@@ -145,9 +136,11 @@ extension PopulationViewController: PopulationViewModelDelegate {
     
     func didFailWithError(_ error: Error) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: "Invalid country name", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if self.presentedViewController == nil {
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
 }
