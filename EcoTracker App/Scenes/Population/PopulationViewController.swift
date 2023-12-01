@@ -67,6 +67,9 @@ final class PopulationViewController: UIViewController {
         stackView.distribution = .fillProportionally
         return stackView
     }()
+    
+    private let people = [TotalPopulation.Population]()
+    private var viewModel = PopulationViewModel()
 
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
