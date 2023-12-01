@@ -26,15 +26,20 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIsetup()
-        elementsSetup()
-        setupButton()
         viewModel.delegate = self
     }
-    
     
     // MARK: UISetup
     
     private func UIsetup() {
+        
+        UIAddview()
+        UIConstraints()
+        elementsSetup()
+        setupButton()
+    }
+    
+    private func UIAddview() {
         view.addSubview(latitudeTextField)
         view.addSubview(longitudeTextField)
         view.addSubview(generateWeatherButton)
@@ -43,8 +48,6 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
         stackView.addArrangedSubview(cityLabel)
         stackView.addArrangedSubview(temperatureLabel)
         stackView.addArrangedSubview(weatherTypeLabel)
-        
-        UIConstraints()
     }
     
     private func UIConstraints() {

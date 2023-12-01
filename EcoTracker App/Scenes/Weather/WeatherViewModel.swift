@@ -9,6 +9,7 @@
 
 import NetSwift
 import Foundation
+import UIKit
 
 protocol WeatherViewDelegate: AnyObject {
     func fetched(with weatherData: WeatherData)
@@ -45,7 +46,6 @@ final class WeatherViewModel {
             case .success(let weatherData):
                 self?.delegate?.fetched(with: weatherData)
             case .failure(_):
-                self?.delegate?.error()
                 self?.delegate?.error()
             }
         }
