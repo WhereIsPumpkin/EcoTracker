@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class SpecieTableViewCell: UITableViewCell {
+final class SpecieTableViewCell: UITableViewCell {
     
     // MARK: - UI Elements
     private let speciesImageView: UIImageView = {
