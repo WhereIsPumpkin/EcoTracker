@@ -78,8 +78,7 @@ final class PopulationViewController: UIViewController {
         setupNavigationBarTitle()
         setupBackground()
         addSubviewsToView()
-        
-        
+        setupViewModelDelegate()
     }
     
     // MARK: - Private Methods
@@ -111,6 +110,21 @@ final class PopulationViewController: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
             mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupViewModelDelegate() {
+        viewModel.delegate = self
+        
+        fetchButton.addTarget(self, action: #selector(fetchPopulationButtonTapped), for: .touchUpInside)
+        
+    }
+    @objc private func fetchPopulationButtonTapped() {
+        guard let country = countryField.text, !country.isEmpty else {
+            print("No country entered")
+            return
+        }
+        
+        viewModel.fetchPopulationData(for: [country])
     }
 }
 // MARK: - PopulationViewModelDelegate
