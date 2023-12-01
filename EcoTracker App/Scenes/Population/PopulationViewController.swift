@@ -56,7 +56,7 @@ final class PopulationViewController: UIViewController {
         return stackView
     }()
     
-
+    
     private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [countryField, buttonStackView, labelStackView])
         stackView.axis = .vertical
@@ -70,7 +70,7 @@ final class PopulationViewController: UIViewController {
     
     private let people = [TotalPopulation.Population]()
     private var viewModel = PopulationViewModel()
-
+    
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ final class PopulationViewController: UIViewController {
         setupNavigationBarTitle()
         setupBackground()
         addSubviewsToView()
-       
+        
         
     }
     
@@ -111,5 +111,29 @@ final class PopulationViewController: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
             mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
         ])
+    }
+}
+// MARK: - PopulationViewModelDelegate
+
+extension PopulationViewController: PopulationViewModelDelegate {
+    func didFetchTotalPopulation(_ totalPopulation: [String : [TotalPopulation.Population]]) {
+        for (country, populationData) in totalPopulation {
+            print("Country: \(country)")
+            for population in populationData {
+                print("Date: \(population.date), Population: \(population.population)")
+            }
+            let todayPopulation = populationData.first?.population ?? 0
+            let tomorrowPopulation = populationData.last?.population ?? 0
+            todayPopulationLabel.text = "Today's Population: \(todayPopulation)"
+            tomorrowPopulationLabel.text = "Tomorrow's Population: \(tomorrowPopulation)"
+        }
+    }
+    
+    func didFailWithError(_ error: Error) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: "Invalid country name", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
