@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+struct CountryList: Decodable {
+    let countries: [String]
+}
+
+struct TotalPopulation: Decodable {
+    let totalPopulation: [Population]
+    
+    enum CodingKeys: String, CodingKey {
+        case totalPopulation = "total_population"
+    }
+    struct Population: Decodable {
+        let date: String
+        let population: Int
+    }
+}
