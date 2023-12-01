@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WeatherViewController: UIViewController, WeatherViewDelegate {
+final class WeatherViewController: UIViewController {
     
     private let viewModel = WeatherViewModel()
     
@@ -141,6 +141,19 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
         viewModel.buttonTapped(latitudeText: latitudeTextField.text, longitudeText: longitudeTextField.text)
     }
     
+    
+    
+    private func updateUI(with weatherData: WeatherData) {
+        cityLabel.text = weatherData.city.name
+        temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °F"
+        weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
+    }
+    
+}
+
+    // MARK: WeatherViewDelegate Extension
+
+extension WeatherViewController: WeatherViewDelegate {
     func fetched(with weatherData: WeatherData) {
         DispatchQueue.main.async {
             self.updateUI(with: weatherData)
@@ -155,13 +168,4 @@ final class WeatherViewController: UIViewController, WeatherViewDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-    private func updateUI(with weatherData: WeatherData) {
-        cityLabel.text = weatherData.city.name
-        temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °F"
-        weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
-    }
-    
 }
-
-
