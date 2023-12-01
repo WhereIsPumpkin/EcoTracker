@@ -21,6 +21,11 @@
 		752ADCE92B16B10C00EF35F7 /* SolarResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ADCE82B16B10C00EF35F7 /* SolarResourceViewModel.swift */; };
 		752ADCEC2B16B12E00EF35F7 /* PopulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ADCEB2B16B12E00EF35F7 /* PopulationViewController.swift */; };
 		752ADCEE2B16B14800EF35F7 /* PopulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752ADCED2B16B14800EF35F7 /* PopulationViewModel.swift */; };
+		753275B12B18CFAA008B4DAF /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753275B02B18CFAA008B4DAF /* CityModel.swift */; };
+		753275B32B193DA7008B4DAF /* SpeciesDiscoveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753275B22B193DA7008B4DAF /* SpeciesDiscoveryModel.swift */; };
+		753275B72B19E57D008B4DAF /* SpecieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753275B62B19E57D008B4DAF /* SpecieTableViewCell.swift */; };
+		753275BA2B19E8C3008B4DAF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 753275B92B19E8C3008B4DAF /* SDWebImage */; };
+		753275BC2B19E8C3008B4DAF /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 753275BB2B19E8C3008B4DAF /* SDWebImageMapKit */; };
 		75CB44F12B16B416005E8364 /* TabBarItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB44F02B16B416005E8364 /* TabBarItemsController.swift */; };
 		75CB44F72B17C33B005E8364 /* NetSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75CB44F62B17C33B005E8364 /* NetSwift */; };
 		A111085A2B189C3B00910B97 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11108592B189C3B00910B97 /* UIColor.swift */; };
@@ -44,6 +49,9 @@
 		752ADCE82B16B10C00EF35F7 /* SolarResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarResourceViewModel.swift; sourceTree = "<group>"; };
 		752ADCEB2B16B12E00EF35F7 /* PopulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewController.swift; sourceTree = "<group>"; };
 		752ADCED2B16B14800EF35F7 /* PopulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationViewModel.swift; sourceTree = "<group>"; };
+		753275B02B18CFAA008B4DAF /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		753275B22B193DA7008B4DAF /* SpeciesDiscoveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDiscoveryModel.swift; sourceTree = "<group>"; };
+		753275B62B19E57D008B4DAF /* SpecieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecieTableViewCell.swift; sourceTree = "<group>"; };
 		75CB44F02B16B416005E8364 /* TabBarItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsController.swift; sourceTree = "<group>"; };
 		A11108592B189C3B00910B97 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A9A97FED2B18E756002E4337 /* ModelWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelWeather.swift; sourceTree = "<group>"; };
@@ -54,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				753275BA2B19E8C3008B4DAF /* SDWebImage in Frameworks */,
+				753275BC2B19E8C3008B4DAF /* SDWebImageMapKit in Frameworks */,
 				75CB44F72B17C33B005E8364 /* NetSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +112,7 @@
 		752ADCCF2B16ACF200EF35F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				753275B42B193DBA008B4DAF /* Specie Models */,
 				A9A97FED2B18E756002E4337 /* ModelWeather.swift */,
 			);
 			path = Models;
@@ -150,6 +161,7 @@
 		752ADCD52B16AD7000EF35F7 /* Specie */ = {
 			isa = PBXGroup;
 			children = (
+				753275B52B19E553008B4DAF /* TableViewCell */,
 				752ADCE22B16B0AD00EF35F7 /* SpecieViewController.swift */,
 				752ADCE42B16B0B400EF35F7 /* SpecieViewModel.swift */,
 			);
@@ -172,6 +184,23 @@
 				752ADCED2B16B14800EF35F7 /* PopulationViewModel.swift */,
 			);
 			path = Population;
+			sourceTree = "<group>";
+		};
+		753275B42B193DBA008B4DAF /* Specie Models */ = {
+			isa = PBXGroup;
+			children = (
+				753275B02B18CFAA008B4DAF /* CityModel.swift */,
+				753275B22B193DA7008B4DAF /* SpeciesDiscoveryModel.swift */,
+			);
+			path = "Specie Models";
+			sourceTree = "<group>";
+		};
+		753275B52B19E553008B4DAF /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				753275B62B19E57D008B4DAF /* SpecieTableViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		A11108582B189C0000910B97 /* Extensions */ = {
@@ -200,6 +229,8 @@
 			name = "EcoTracker App";
 			packageProductDependencies = (
 				75CB44F62B17C33B005E8364 /* NetSwift */,
+				753275B92B19E8C3008B4DAF /* SDWebImage */,
+				753275BB2B19E8C3008B4DAF /* SDWebImageMapKit */,
 			);
 			productName = "EcoTracker App";
 			productReference = 752ADCB42B16ABC000EF35F7 /* EcoTracker App.app */;
@@ -231,6 +262,7 @@
 			mainGroup = 752ADCAB2B16ABC000EF35F7;
 			packageReferences = (
 				75CB44F52B17C33B005E8364 /* XCRemoteSwiftPackageReference "SwiftNet" */,
+				753275B82B19E8C3008B4DAF /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 752ADCB52B16ABC000EF35F7 /* Products */;
 			projectDirPath = "";
@@ -264,6 +296,8 @@
 				752ADCE32B16B0AD00EF35F7 /* SpecieViewController.swift in Sources */,
 				752ADCB82B16ABC000EF35F7 /* AppDelegate.swift in Sources */,
 				752ADCDD2B16B00500EF35F7 /* AirQualityViewModel.swift in Sources */,
+				753275B32B193DA7008B4DAF /* SpeciesDiscoveryModel.swift in Sources */,
+				753275B12B18CFAA008B4DAF /* CityModel.swift in Sources */,
 				752ADCDF2B16B04100EF35F7 /* WeatherViewController.swift in Sources */,
 				752ADCE12B16B08400EF35F7 /* WeatherViewModel.swift in Sources */,
 				752ADCE92B16B10C00EF35F7 /* SolarResourceViewModel.swift in Sources */,
@@ -273,6 +307,7 @@
 				752ADCEC2B16B12E00EF35F7 /* PopulationViewController.swift in Sources */,
 				752ADCBA2B16ABC000EF35F7 /* SceneDelegate.swift in Sources */,
 				752ADCE72B16B0FB00EF35F7 /* SolarResourceViewController.swift in Sources */,
+				753275B72B19E57D008B4DAF /* SpecieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +522,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		753275B82B19E8C3008B4DAF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.5;
+			};
+		};
 		75CB44F52B17C33B005E8364 /* XCRemoteSwiftPackageReference "SwiftNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WhereIsPumpkin/SwiftNet";
@@ -498,6 +541,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		753275B92B19E8C3008B4DAF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 753275B82B19E8C3008B4DAF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		753275BB2B19E8C3008B4DAF /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 753275B82B19E8C3008B4DAF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
 		75CB44F62B17C33B005E8364 /* NetSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 75CB44F52B17C33B005E8364 /* XCRemoteSwiftPackageReference "SwiftNet" */;
