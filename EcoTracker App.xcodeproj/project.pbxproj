@@ -31,6 +31,7 @@
 		98532D882B18C29D00E14F8C /* PopulationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98532D872B18C29D00E14F8C /* PopulationModel.swift */; };
 		75F043782B1A2A55004B363E /* SolarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F043772B1A2A55004B363E /* SolarModel.swift */; };
 		A111085A2B189C3B00910B97 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11108592B189C3B00910B97 /* UIColor.swift */; };
+		A1F29B4E2B1A044400246FB8 /* AirQualityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F29B4D2B1A044400246FB8 /* AirQualityModel.swift */; };
 		A9A97FEE2B18E756002E4337 /* ModelWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97FED2B18E756002E4337 /* ModelWeather.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		98532D872B18C29D00E14F8C /* PopulationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationModel.swift; sourceTree = "<group>"; };
 		75F043772B1A2A55004B363E /* SolarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarModel.swift; sourceTree = "<group>"; };
 		A11108592B189C3B00910B97 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		A1F29B4D2B1A044400246FB8 /* AirQualityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityModel.swift; sourceTree = "<group>"; };
 		A9A97FED2B18E756002E4337 /* ModelWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,8 @@
 		752ADCCF2B16ACF200EF35F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+
+				A1F29B4D2B1A044400246FB8 /* AirQualityModel.swift */,
 				98532D872B18C29D00E14F8C /* PopulationModel.swift */,
 				753275B42B193DBA008B4DAF /* Specie Models */,
 				A9A97FED2B18E756002E4337 /* ModelWeather.swift */,
@@ -312,6 +316,7 @@
 				75CB44F12B16B416005E8364 /* TabBarItemsController.swift in Sources */,
 				75F043782B1A2A55004B363E /* SolarModel.swift in Sources */,
 				752ADCEC2B16B12E00EF35F7 /* PopulationViewController.swift in Sources */,
+				A1F29B4E2B1A044400246FB8 /* AirQualityModel.swift in Sources */,
 				752ADCBA2B16ABC000EF35F7 /* SceneDelegate.swift in Sources */,
 				98532D882B18C29D00E14F8C /* PopulationModel.swift in Sources */,
 				753275B72B19E57D008B4DAF /* SpecieTableViewCell.swift in Sources */,
