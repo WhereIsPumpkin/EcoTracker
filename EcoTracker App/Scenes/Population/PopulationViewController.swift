@@ -71,10 +71,42 @@ final class PopulationViewController: UIViewController {
     // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .systemBackground
-        title = "Population"
+        
+        setupNavigationBarTitle()
+        setupBackground()
+        addSubviewsToView()
+       
+        
     }
     
     // MARK: - Private Methods
+    
+    private func setupNavigationBarTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = "Air Quality"
+        titleLabel.textColor = .white
+        navigationItem.titleView = titleLabel
+    }
+    
+    private func setupBackground() {
+        view.backgroundColor = .backgroundColor
+    }
+    
+    private func addSubviewsToView() {
+        addMainSubviews()
+        setupConstraints()
+    }
+    
+    private func addMainSubviews() {
+        view.addSubview(mainStackView)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainStackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
+        ])
+    }
 }
