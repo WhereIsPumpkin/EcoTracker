@@ -14,9 +14,12 @@ final class AirQualityViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -50,13 +53,14 @@ final class AirQualityViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         label.numberOfLines = 0
-        label.textColor = UIColor.buttonBackground // same color as buttonBackground
+        label.textColor = UIColor.buttonBackground
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textAlignment = .center
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         label.textColor = .white
         return label

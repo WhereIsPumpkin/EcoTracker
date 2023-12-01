@@ -26,6 +26,7 @@ final class SpecieViewController: UIViewController {
         controller.hidesNavigationBarDuringPresentation = false
         controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.showsCancelButton = false
+        controller.searchBar.searchTextField.textColor = UIColor.white
         return controller
     }()
     
@@ -34,6 +35,7 @@ final class SpecieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Specie"
+        view.backgroundColor = .black
         setDelegates()
         setupUI()
     }
@@ -49,6 +51,7 @@ final class SpecieViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .black
     }
     
     private func setupSearchController() {

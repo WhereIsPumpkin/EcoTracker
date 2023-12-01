@@ -26,7 +26,6 @@ final class PopulationViewModel {
     }
     
     func viewDidload(){
-        
         fetchCountries()
     }
     
@@ -54,6 +53,7 @@ final class PopulationViewModel {
         let dispatchGroup = DispatchGroup()
         
         for country in countries {
+            print(country)
             dispatchGroup.enter()
             
             let urlString = "https://d6wn6bmjj722w.population.io:443/1.0/population/\(country)/today-and-tomorrow/"

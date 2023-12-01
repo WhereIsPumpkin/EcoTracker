@@ -12,6 +12,7 @@ class TabBarItemsController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabBarViews()
+        setupTabBarColors()
     }
     
     // MARK: - Setup Tab Bar Views
@@ -23,6 +24,7 @@ class TabBarItemsController: UITabBarController {
         let populationVC = createPopulationVC()
         
         setViewControllers([airQualityVC, weatherVC, specieVC, solarResourceVC, populationVC], animated: true)
+        
     }
     
     // MARK: - Create TabBarItem View Controllers
@@ -59,6 +61,22 @@ class TabBarItemsController: UITabBarController {
         populationVC.tabBarItem.image = UIImage(systemName: "person.3")
         populationVC.title = "Population"
         return populationVC
+    }
+    
+    private func setupTabBarColors() {
+        tabBar.tintColor = UIColor.buttonBackground
+        tabBar.unselectedItemTintColor = UIColor.gray
+        createTabBarBackgroundColor()
+    }
+    
+    private func createTabBarBackgroundColor() {
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.black
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        }
     }
 }
 
