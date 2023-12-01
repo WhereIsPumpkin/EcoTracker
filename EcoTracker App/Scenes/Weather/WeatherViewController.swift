@@ -141,14 +141,11 @@ final class WeatherViewController: UIViewController {
         viewModel.buttonTapped(latitudeText: latitudeTextField.text, longitudeText: longitudeTextField.text)
     }
     
-    
-    
     private func updateUI(with weatherData: WeatherData) {
         cityLabel.text = weatherData.city.name
         temperatureLabel.text = "\(weatherData.list.first?.main.temp ?? 0) °F"
         weatherTypeLabel.text = weatherData.list.first?.weather.first?.description
     }
-    
 }
 
     // MARK: WeatherViewDelegate Extension
