@@ -68,6 +68,7 @@ final class AirQualityViewController: UIViewController {
         controller.hidesNavigationBarDuringPresentation = false
         controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.showsCancelButton = false
+        controller.searchBar.searchTextField.textColor = UIColor.white
         
         return controller
     }()
