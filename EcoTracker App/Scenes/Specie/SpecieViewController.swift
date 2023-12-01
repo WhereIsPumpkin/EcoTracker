@@ -67,6 +67,7 @@ final class SpecieViewController: UIViewController {
     
     private func setDelegates() {
         specieViewModel.delegate = self
+        searchController.searchBar.delegate = self
     }
     
     // MARK: - Methods
@@ -121,5 +122,14 @@ extension SpecieViewController: SpecieViewModelDelegate {
     
     func showError(_ error: Error) {
         print("error")
+    }
+}
+
+extension SpecieViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            species = []
+            tableView.reloadData()
+        }
     }
 }

@@ -24,7 +24,6 @@ final class PopulationViewController: UIViewController {
         button.setTitle("Fetch Population", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.backgroundColor = .buttonBackground
-        button.addTarget(self, action: #selector(fetchPopulationButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -77,6 +76,7 @@ final class PopulationViewController: UIViewController {
         setupNavigationBarTitle()
         setupBackground()
         addSubviewsToView()
+        setupButtonTarget()
     }
     
     private func setupNavigationBarTitle() {
@@ -118,6 +118,10 @@ final class PopulationViewController: UIViewController {
         }
         
         viewModel.fetchPopulationData(for: [country])
+    }
+    
+    private func setupButtonTarget() {
+        fetchButton.addTarget(self, action: #selector(fetchPopulationButtonTapped), for: .touchUpInside)
     }
 }
 // MARK: - PopulationViewModelDelegate
