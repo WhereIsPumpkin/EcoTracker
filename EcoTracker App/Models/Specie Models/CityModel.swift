@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ResponseModel: Codable {
+struct ResponseModel: Decodable {
     let results: [CityModel]
 }
 
-struct CityModel: Codable {
+struct CityModel: Decodable {
     let id: Int
 }
 
