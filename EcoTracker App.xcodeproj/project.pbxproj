@@ -28,6 +28,7 @@
 		753275BC2B19E8C3008B4DAF /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 753275BB2B19E8C3008B4DAF /* SDWebImageMapKit */; };
 		75CB44F12B16B416005E8364 /* TabBarItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB44F02B16B416005E8364 /* TabBarItemsController.swift */; };
 		75CB44F72B17C33B005E8364 /* NetSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75CB44F62B17C33B005E8364 /* NetSwift */; };
+		75F043782B1A2A55004B363E /* SolarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F043772B1A2A55004B363E /* SolarModel.swift */; };
 		A111085A2B189C3B00910B97 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11108592B189C3B00910B97 /* UIColor.swift */; };
 		A9A97FEE2B18E756002E4337 /* ModelWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A97FED2B18E756002E4337 /* ModelWeather.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		753275B22B193DA7008B4DAF /* SpeciesDiscoveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDiscoveryModel.swift; sourceTree = "<group>"; };
 		753275B62B19E57D008B4DAF /* SpecieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecieTableViewCell.swift; sourceTree = "<group>"; };
 		75CB44F02B16B416005E8364 /* TabBarItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsController.swift; sourceTree = "<group>"; };
+		75F043772B1A2A55004B363E /* SolarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarModel.swift; sourceTree = "<group>"; };
 		A11108592B189C3B00910B97 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A9A97FED2B18E756002E4337 /* ModelWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 			children = (
 				753275B42B193DBA008B4DAF /* Specie Models */,
 				A9A97FED2B18E756002E4337 /* ModelWeather.swift */,
+				75F043772B1A2A55004B363E /* SolarModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				752ADCEE2B16B14800EF35F7 /* PopulationViewModel.swift in Sources */,
 				752ADCDB2B16AF6B00EF35F7 /* AirQualityViewController.swift in Sources */,
 				75CB44F12B16B416005E8364 /* TabBarItemsController.swift in Sources */,
+				75F043782B1A2A55004B363E /* SolarModel.swift in Sources */,
 				752ADCEC2B16B12E00EF35F7 /* PopulationViewController.swift in Sources */,
 				752ADCBA2B16ABC000EF35F7 /* SceneDelegate.swift in Sources */,
 				752ADCE72B16B0FB00EF35F7 /* SolarResourceViewController.swift in Sources */,
