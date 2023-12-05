@@ -15,11 +15,9 @@ final class AirQualityViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,7 +37,7 @@ final class AirQualityViewController: UIViewController {
         return label
     }()
     
-    private var indexLabel: UILabel = {
+    private let indexLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 22)
@@ -53,7 +51,7 @@ final class AirQualityViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         label.numberOfLines = 0
-        label.textColor = UIColor.buttonBackground
+        label.textColor = UIColor.buttonBackground // same color as buttonBackground
         return label
     }()
     
@@ -73,7 +71,6 @@ final class AirQualityViewController: UIViewController {
         controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.showsCancelButton = false
         controller.searchBar.searchTextField.textColor = UIColor.white
-        
         return controller
     }()
     
@@ -139,7 +136,7 @@ final class AirQualityViewController: UIViewController {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
             return
         }
-        viewModel.fetchAirQuality(with: searchText)
+        viewModel.searchButtonDidTap(with: searchText)
     }
     
     private func setDefaultLabels() {
@@ -162,26 +159,25 @@ final class AirQualityViewController: UIViewController {
 
 // MARK: - AirQualityViewModelDelegate
 extension AirQualityViewController: AirQualityViewModelDelegate {
-    func airQualityFetched(_ airQuality: [AirQualityModel]) {
-        self.airQuality = airQuality
-        if let firstCity = airQuality.first {
-            self.configure(with: firstCity)
-            updateConditionLabel(for: firstCity.airQuality)
-            updateDescriptionLabel(for: firstCity.airQuality)
-        }
-    }
-    
     func showError(_ error: Error) {
         print(error.localizedDescription)
     }
     
-    private func updateConditionLabel(for airQualityIndex: Int) {
-        let condition = viewModel.getConditionLabel(for: airQualityIndex)
+    func airQualityFetched(_ airQuality: [AirQualityModel]) {
+        self.airQuality = airQuality
+        if let firstCity = airQuality.first {
+            self.configure(with: firstCity)
+            updateConditionLabel()
+            updateDescriptionLabel()
+        }
+    }
+    private func updateConditionLabel() {
+        let condition = viewModel.updateCondition()
         conditionLabel.text = condition
     }
     
-    private func updateDescriptionLabel(for airQualityIndex: Int) {
-        let description = viewModel.getDescription(for: airQualityIndex)
+    private func updateDescriptionLabel() {
+        let description = viewModel.updateDescription()
         descriptionLabel.text = description
     }
 }

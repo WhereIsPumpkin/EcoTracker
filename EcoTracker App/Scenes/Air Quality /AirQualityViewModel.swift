@@ -21,11 +21,13 @@ final class AirQualityViewModel {
     private let apiKey =  "d55602ca1a8e4bc992bb93cc5fbf295c"
     
     weak var delegate: AirQualityViewModelDelegate?
-    
     private var airQuality: [AirQualityModel]?
+    private var index: Int? {
+        return airQuality?.first?.airQuality
+    }
     
     // MARK: - Methods
-    func fetchAirQuality(with cityName: String) {
+    func searchButtonDidTap(with cityName: String) {
         let urlStr = "\(baseURL)&city=\(cityName)&key=\(apiKey)"
         
         guard let url = URL(string: urlStr) else { return }
@@ -39,6 +41,14 @@ final class AirQualityViewModel {
                 self?.delegate?.showError(error)
             }
         }
+    }
+    
+    func updateCondition() -> String {
+        getConditionLabel(for: index ?? 0)
+    }
+    
+    func updateDescription() -> String {
+        getDescription(for: index ?? 0)
     }
     
     func getConditionLabel(for airQualityIndex: Int) -> String {
